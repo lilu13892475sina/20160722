@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	.txt{font-size: 50px;font-weight: bold;text-align: center;height: 400px;line-height: 400px;text-shadow: 0 0 0 #000;}
+	.sun{width: 100px;height: 100px;background:#FC0;border-radius: 50%;position: absolute;top: 0;left: 0;box-shadow: 0 0 100px #FF0;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oSun = document.querySelector('.sun');
+		var oTxt = document.querySelector('.txt');
+		document.onmousemove = function(ev){
+			oSun.style.left = ev.pageX - oSun.offsetWidth/2+'px';
+			oSun.style.top = ev.pageY - oSun.offsetHeight/2 +'px';
+			var x = (oTxt.offsetLeft+oTxt.offsetWidth/2)-(oSun.offsetLeft+oSun.offsetWidth/2);
+			var y = (oTxt.offsetTop+oTxt.offsetHeight/2)-(oSun.offsetTop+oSun.offsetHeight/2);
+			var dis = Math.sqrt(x*x+y*y);
+			oTxt.style.textShadow = x/3+'px '+y/3+'px '+dis/10+'px #000';
+		}
+	}
+	</script>
+</head>
+<body>
+	<div class="txt">welcome!</div>
+	<div class="sun"></div>
+</body>
+</html>
